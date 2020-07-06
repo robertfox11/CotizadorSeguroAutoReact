@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import { getDiferenciaYear } from "../Helpers";
 const CampoDiv = styled.div`
   display: flex;
   margin-bottom: 1rem;
@@ -34,6 +35,14 @@ const Btn = styled.button`
     cursor: pointer;
   }
 `;
+const Error = styled.div`
+  background-color: red;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 2rem;
+`;
 const Form = () => {
   //validando datos con error
   const [error, saveError] = useState(false);
@@ -52,15 +61,26 @@ const Form = () => {
   };
   const cotizarSeguro = (e) => {
     e.preventDefault();
-    if (marca.trim() == "" || year.trim() == "" || plan.trim() == "") {
+    if (marca.trim() === "" || year.trim() === "" || plan.trim() === "") {
       saveError(true);
       return;
     }
     saveError(false);
+    // la base de 2000
+    let result = 2000;
+    //Obterner la diferencia en años
+    const difer = getDiferenciaYear(year);
+
+    // por cada año hay que restar el 3%
+    result -= (difer * 3 * result) / 100;
+    console.log(result);
+
+    console.log(difer);
   };
 
   return (
     <form onSubmit={cotizarSeguro}>
+      {error ? <Error message="Todos los Campos son obligatorios" /> : null}
       <CampoDiv>
         <Label>Marca</Label>
         <Select name="marca" value={marca} onChange={getInformation}>
