@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { getDiferenciaYear, calcularMarca } from "../Helpers";
+import { getDiferenciaYear, calcularMarca, getPlan } from "../Helpers";
 const CampoDiv = styled.div`
   display: flex;
   margin-bottom: 1rem;
@@ -76,6 +76,10 @@ const Form = () => {
     console.log(result);
     //incremento por marca Americano europero y asiatico
     result = calcularMarca(marca) * result;
+    console.log(result);
+    // calculando el costo basado el plan
+    const incrementoPlan = getPlan(plan);
+    result = parseFloat(incrementoPlan * result).toFixed(2);
     console.log(result);
   };
 
