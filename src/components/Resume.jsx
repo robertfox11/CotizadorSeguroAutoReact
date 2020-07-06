@@ -1,5 +1,6 @@
-import React, { Fragment } from "react";
+import React from "react";
 import styled from "@emotion/styled";
+import Proptype from "prop-types";
 import { primeraMayuscula } from "../Helpers";
 const ContenResume = styled.div`
   padding: 1rem;
@@ -23,5 +24,7 @@ const Resume = ({ datos }) => {
     </ContenResume>
   );
 };
-
+Resume.prototype = {
+  datos: Proptype.object.isRequired,
+};
 export default Resume;

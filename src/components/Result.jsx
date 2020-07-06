@@ -1,4 +1,5 @@
 import React from "react";
+import Proptype from "prop-types";
 import styled from "@emotion/styled";
 const Mensaje = styled.p`
   background-color: rgb(127, 224, 237);
@@ -32,4 +33,7 @@ const Result = ({ cotizacion }) => {
   );
 };
 
+Result.prototype = {
+  cotizacion: Proptype.number.isRequired,
+};
 export default Result;

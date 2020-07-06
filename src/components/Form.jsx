@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
+import Proptype from "prop-types";
 import { getDiferenciaYear, calcularMarca, getPlan } from "../Helpers";
 const CampoDiv = styled.div`
   display: flex;
@@ -82,7 +83,7 @@ const Form = ({ saveResume }) => {
     result = parseFloat(incrementoPlan * result).toFixed(2);
     console.log(result);
     saveResume({
-      cotizacion: result,
+      cotizacion: Number(result),
       datos,
     });
   };
@@ -137,6 +138,9 @@ const Form = ({ saveResume }) => {
       <Btn type="submit">Cotizar</Btn>
     </form>
   );
+};
+Form.prototype = {
+  saveResume: Proptype.func.isRequired,
 };
 
 export default Form;
