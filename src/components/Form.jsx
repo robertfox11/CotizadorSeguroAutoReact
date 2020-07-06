@@ -43,7 +43,7 @@ const Error = styled.div`
   text-align: center;
   margin-bottom: 2rem;
 `;
-const Form = () => {
+const Form = ({ saveResume }) => {
   //validando datos con error
   const [error, saveError] = useState(false);
 
@@ -81,11 +81,15 @@ const Form = () => {
     const incrementoPlan = getPlan(plan);
     result = parseFloat(incrementoPlan * result).toFixed(2);
     console.log(result);
+    saveResume({
+      cotizacion: result,
+      datos,
+    });
   };
 
   return (
     <form onSubmit={cotizarSeguro}>
-      {error ? <Error message="Todos los Campos son obligatorios" /> : null}
+      {error ? <Error>Todos los Campos son obligatorios</Error> : null}
       <CampoDiv>
         <Label>Marca</Label>
         <Select name="marca" value={marca} onChange={getInformation}>
