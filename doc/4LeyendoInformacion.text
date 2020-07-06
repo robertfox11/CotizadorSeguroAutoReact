@@ -27,3 +27,33 @@ De los Radios
           value="basico"
           checked={plan === "basico"}
         />
+
+//Leer datos del formulario y guardarlo en el state en un objeto con esta funcion
+  const getInformation = (e) => {
+    saveDatos({ ...datos, [e.target.name]: e.target.value });
+  };
+
+<Select name="marca" value={marca} onChange={getInformation}>
+
+<Label>Año</Label>
+        <Select name="year" value={year} onChange={getInformation}>
+
+        <Label>Plan</Label>
+        <InputRadio
+          type="radio"
+          name="plan"
+          value="basico"
+          checked={plan === "basico"}
+          onChange={getInformation}
+        />
+        Básico
+        <InputRadio
+          type="radio"
+          name="plan"
+          value="completo"
+          checked={plan === "completo"}
+          onChange={getInformation}
+        />
+        Completo
+      </CampoDiv>
+      <Btn type="button">Cotizar</Btn>

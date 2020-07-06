@@ -43,11 +43,16 @@ const Form = () => {
   });
   //Extraer los valores del state
   const { marca, year, plan } = datos;
+  //Leer datos del formulario y guardarlo en el state en un objeto
+  const getInformation = (e) => {
+    saveDatos({ ...datos, [e.target.name]: e.target.value });
+  };
+
   return (
     <form>
       <CampoDiv>
         <Label>Marca</Label>
-        <Select name="marca" value={marca}>
+        <Select name="marca" value={marca} onChange={getInformation}>
           <option value="">---Seleccione----</option>
           <option value="americano">Americano</option>
           <option value="europeo">Europeo</option>
@@ -56,7 +61,7 @@ const Form = () => {
       </CampoDiv>
       <CampoDiv>
         <Label>Año</Label>
-        <Select name="year" value={year}>
+        <Select name="year" value={year} onChange={getInformation}>
           <option value="">-- Seleccione --</option>
           <option value="2021">2021</option>
           <option value="2020">2020</option>
@@ -77,6 +82,7 @@ const Form = () => {
           name="plan"
           value="basico"
           checked={plan === "basico"}
+          onChange={getInformation}
         />
         Básico
         <InputRadio
@@ -84,6 +90,7 @@ const Form = () => {
           name="plan"
           value="completo"
           checked={plan === "completo"}
+          onChange={getInformation}
         />
         Completo
       </CampoDiv>
