@@ -1,2 +1,20 @@
 Calculado datos en base a años
 Creamos un helpers
+para obtener el año
+export function getDiferenciaYear(year) {
+  return new Date().getFullYear() - year;
+}
+
+
+Utilizamos el helpers
+import { getDiferenciaYear } from "../Helpers";
+    // la base de 2000
+    let result = 2000;
+    //Obterner la diferencia en años
+    const difer = getDiferenciaYear(year);
+
+    // por cada año hay que restar el 3%
+    result -= (difer * 3 * result) / 100;
+    console.log(result);
+
+//calcula el total a pagar segun la marca
