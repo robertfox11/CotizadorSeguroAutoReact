@@ -17,7 +17,7 @@ const ContentHuno = styled.h1`
 const Header = ({ title }) => {
   return (
     <ContentHeader>
-      <h1>{title}</h1>
+      <ContentHuno>{title}</ContentHuno>
     </ContentHeader>
   );
 };

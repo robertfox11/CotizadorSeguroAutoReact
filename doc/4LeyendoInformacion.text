@@ -1,0 +1,29 @@
+Leyendo informacionque cada usuario selecciona
+Vamos a utilizar useState
+import React, { useState } from "react";
+
+Creamo una const con valores con string vacios
+//guardando datos en un string vacio con variables separadas
+const [datos, saveDatos] = useState({
+    marca: "",
+    year: "",
+    plan: "",
+  });
+
+  //Extraer los valores del state
+  const { marca, year, plan } = datos;
+
+  y lo usamos en nuestro html 
+  Marca 
+  <Select name="marca" value={marca}>
+del Año
+  <Label>Año</Label>
+        <Select name="year" value={year}>
+De los Radios
+<Label>Plan</Label>
+        <InputRadio
+          type="radio"
+          name="plan"
+          value="basico"
+          checked={plan === "basico"}
+        />

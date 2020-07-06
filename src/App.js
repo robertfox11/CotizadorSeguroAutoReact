@@ -1,6 +1,7 @@
 import React from "react";
-import Header from "./components/Header";
 import styled from "@emotion/styled";
+import Header from "./components/Header";
+import Form from "./components/Form";
 
 const Content = styled.div`
   max-width: 600px;
@@ -14,7 +15,9 @@ function App() {
   return (
     <Content>
       <Header title="Cotizador de seguro" />
-      <ContentForm></ContentForm>
+      <ContentForm>
+        <Form />
+      </ContentForm>
     </Content>
   );
 }
