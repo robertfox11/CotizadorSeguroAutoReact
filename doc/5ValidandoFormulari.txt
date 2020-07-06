@@ -1,0 +1,15 @@
+VAlidando formulario 
+Creamos un evento del formulario 
+  //validando datos con error con y useState
+  const [error, saveError] = useState(false);
+onSubmit={cotizarSeguro}
+const cotizarSeguro = (e) => {
+    e.preventDefault();
+    if (marca.trim() == "" || year.trim() == "" || plan.trim() == "") {
+      saveError(true);
+      return;
+    }
+    saveError(false);
+  };
+
+

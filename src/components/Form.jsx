@@ -35,6 +35,9 @@ const Btn = styled.button`
   }
 `;
 const Form = () => {
+  //validando datos con error
+  const [error, saveError] = useState(false);
+
   //guardando datos en un string vacio con variables separadas
   const [datos, saveDatos] = useState({
     marca: "",
@@ -47,9 +50,17 @@ const Form = () => {
   const getInformation = (e) => {
     saveDatos({ ...datos, [e.target.name]: e.target.value });
   };
+  const cotizarSeguro = (e) => {
+    e.preventDefault();
+    if (marca.trim() == "" || year.trim() == "" || plan.trim() == "") {
+      saveError(true);
+      return;
+    }
+    saveError(false);
+  };
 
   return (
-    <form>
+    <form onSubmit={cotizarSeguro}>
       <CampoDiv>
         <Label>Marca</Label>
         <Select name="marca" value={marca} onChange={getInformation}>
@@ -94,7 +105,7 @@ const Form = () => {
         />
         Completo
       </CampoDiv>
-      <Btn type="button">Cotizar</Btn>
+      <Btn type="submit">Cotizar</Btn>
     </form>
   );
 };
